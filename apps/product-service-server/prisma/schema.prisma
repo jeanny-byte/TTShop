@@ -1,0 +1,33 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Payment {
+  createdAt             DateTime @default(now())
+  id                    String   @id @default(cuid())
+  paystackPaymentApiKey String?
+  updatedAt             DateTime @updatedAt
+}
+
+model Telegram {
+  chatBotId     String?
+  chatId        String?
+  createdAt     DateTime @default(now())
+  id            String   @id @default(cuid())
+  netlifyApiKey String?
+  updatedAt     DateTime @updatedAt
+}
+
+model Product {
+  createdAt   DateTime @default(now())
+  description String?
+  id          String   @id @default(cuid())
+  images      String?
+  price       Float?
+  updatedAt   DateTime @updatedAt
+}
